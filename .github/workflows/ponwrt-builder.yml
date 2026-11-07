@@ -22,7 +22,7 @@ on:
           - 不使用缓存
 
 env:
-  REPO_URL: https://github.com/1018ji/merge-immortalwrt-ponwrt
+  REPO_URL: https://github.com/sgyuebing/ponwrt
   REPO_BRANCH: master
   IMMORTALWRT_URL: https://github.com/immortalwrt/immortalwrt
   PONWRT_URL: https://github.com/pbs05/ponwrt
