@@ -16,7 +16,7 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-echo 'src-git lienol https://github.com/Lienol/openwrt-package' >>feeds.conf.default
-echo 'src-git Aibx https://github.com/Aibx/openwrt-packages' >>feeds.conf.default
-echo 'src-git mmdvm https://github.com/qzyuebing/mmdvm-openwrt' >>feeds.conf.default
-echo 'src-git mmdvmto https://github.com/qzyuebing/mmdvm-feeds' >>feeds.conf.default
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git Aibx https://github.com/Aibx/openwrt-packages' feeds.conf.default
+sed -i '$a src-git mmdvm https://github.com/qzyuebing/mmdvm-openwrt' feeds.conf.default
+sed -i '$a src-git mmdvmto https://github.com/qzyuebing/mmdvm-feeds' feeds.conf.default
