@@ -1,0 +1,14 @@
+
+config mjpg-streamer 'core'
+	option input 'uvc'
+	option output 'http'
+	option device '/dev/video0'
+	option resolution '640x480'
+	option led 'auto'
+	option www '/www/webcam'
+	option port '8080'
+	option enabled '1'
+	option fps '60'
+	option quality '100'
+	option enable_auth '0'
+

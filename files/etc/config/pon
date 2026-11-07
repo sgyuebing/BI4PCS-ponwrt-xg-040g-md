@@ -1,0 +1,26 @@
+
+config xpon 'line0'
+	option device 'pon0'
+	option mode 'xgpon'
+	option serial_number 'ZTEGD3D5A625'
+	option registration_id 'WF560000331940'
+
+config omci 'line0_omci'
+	option line 'line0'
+	option device 'omci0'
+	option omcc_version '0x86'
+	option loid 'WF560000331940'
+	option vendor_id 'ZTEG'
+	option equipment_id 'ZXHN G7615'
+	option hardware_version 'V1.3.1'
+	option software_version 'V2.0.0P2T2'
+	option operator_id 'CTCC'
+
+config oam 'line0_oam'
+	option line 'line0'
+	option device 'oam0'
+	option operator 'ctc'
+	option ctc_oui '111111'
+	option ctc_versions '21 30'
+	option ge_ports '1'
+

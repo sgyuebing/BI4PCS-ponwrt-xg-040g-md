@@ -1,0 +1,74 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	list ipaddr '127.0.0.1/8'
+
+config globals 'globals'
+	option dhcp_default_duid '0004d326559df9b259b9a511321b8ef6cc89'
+	option ula_prefix 'fd01:6c0:eae0::/48'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan1'
+	list ports 'lan4'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	list ipaddr '192.168.1.1/24'
+	option ip6assign '60'
+
+config interface 'wan'
+	option device 'pon0.41'
+	option proto 'pppoe'
+	option username 't5363758509'
+	option password '261819'
+	option norelease '1'
+
+config device
+	option type '8021q'
+	option ifname 'pon0'
+	option vid '41'
+	option name 'pon0.41'
+	option mtu '1500'
+	option macaddr '68:27:5F:2B:38:E6'
+
+config device 'luci_iptv_service_vlan'
+	option type '8021q'
+	option ifname 'pon0'
+	option vid '43'
+	option name 'ct-iptv-svc'
+
+config device 'luci_iptv_multicast_vlan'
+	option type '8021q'
+	option ifname 'pon0'
+	option vid '40'
+	option name 'ct-iptv-mc'
+
+config device 'luci_iptv_bridge'
+	option type 'bridge'
+	option name 'br-iptv'
+	list ports 'ct-iptv-mc'
+	list ports 'ct-iptv-svc'
+	list ports 'lan2'
+	option igmpversion '2'
+
+config interface 'luci_iptv'
+	option device 'br-iptv'
+	option delegate '0'
+	option defaultroute '0'
+
+config interface 'SDYX'
+	option proto 'static'
+	option device 'lan3'
+	option ipaddr '10.94.131.7'
+	option gateway '10.94.0.1'
+	option broadcast '10.94.255.255'
+	option defaultroute '0'
+
+config device
+	option name 'lan3'
+	option igmpversion '2'
+
