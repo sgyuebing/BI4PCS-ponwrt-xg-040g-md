@@ -121,13 +121,22 @@ config rule
 	option proto 'udp'
 	option target 'ACCEPT'
 
-config include 'luci_app_pptp_server'
-	option type 'script'
-	option path '/var/etc/pptpd.include'
-
 config include 'luci_iptv'
 	option type 'nftables'
 	option position 'ruleset-append'
 	option path '/etc/iptv.nft'
 	option enabled '1'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name '8889'
+	option src 'wan'
+	option src_dport '8889'
+	option dest_ip '192.168.1.1'
+	option dest_port '80'
+
+config include 'luci_app_pptp_server'
+	option type 'script'
+	option path '/var/etc/pptpd.include'
 

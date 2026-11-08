@@ -1,0 +1,22 @@
+
+config init
+	option stdout '1'
+	option stderr '1'
+	option respawn '1'
+	option user 'root'
+	option group 'root'
+
+config conf 'common'
+	option server_addr '127.0.0.1'
+	option server_port '7600'
+	option login_fail_exit 'true'
+	option tcp_mux 'true'
+	option tls_enable 'true'
+	option disable_custom_tls_first_byte 'true'
+	option admin_tls_enable 'false'
+	option pprof_enable 'false'
+	option log_file 'console'
+	option log_max_days '3'
+	option client_id 'XG-040G'
+	option token '123456'
+

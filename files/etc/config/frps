@@ -1,0 +1,25 @@
+
+config init
+	option stdout '1'
+	option stderr '1'
+	option respawn '1'
+	option user 'root'
+	option group 'root'
+
+config conf 'common'
+	option bind_addr '0.0.0.0'
+	option bind_port '7600'
+	option max_pool_count '20'
+	option tcp_mux 'true'
+	option detailed_errors_to_client 'true'
+	option admin_tls_enable 'false'
+	option pprof_enable 'false'
+	option enable_prometheus 'false'
+	option log_file 'console'
+	option log_max_days '3'
+	option admin_port '7500'
+	option admin_user '123'
+	option admin_pwd '123'
+	option admin_addr '0.0.0.0'
+	option token '123456'
+

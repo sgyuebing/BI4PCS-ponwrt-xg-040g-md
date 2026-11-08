@@ -3,14 +3,20 @@ config service 'pptpd'
 	option localip '192.168.0.1'
 	option enabled '0'
 	option mppe '0'
+	option remoteip '192.168.0.10-20'
 
 config users
 	option enabled '1'
-	option password '123'
+	option password '696544'
 	option username 'x86'
 
 config users
 	option enabled '1'
 	option username 'mate30'
-	option password '123'
+	option password '696544'
+
+config users
+	option enabled '1'
+	option username 'yuebing'
+	option password '696544'
 

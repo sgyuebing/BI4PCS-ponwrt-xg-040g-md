@@ -35,6 +35,18 @@ config device
 	option mtu '1500'
 	option macaddr '68:27:5F:2B:38:E6'
 
+config interface 'SDYX'
+	option proto 'static'
+	option device 'lan3'
+	option ipaddr '10.94.131.7'
+	option gateway '10.94.0.1'
+	option broadcast '10.94.255.255'
+	option defaultroute '0'
+
+config device
+	option name 'lan3'
+	option igmpversion '2'
+
 config device 'luci_iptv_service_vlan'
 	option type '8021q'
 	option ifname 'pon0'
@@ -50,25 +62,15 @@ config device 'luci_iptv_multicast_vlan'
 config device 'luci_iptv_bridge'
 	option type 'bridge'
 	option name 'br-iptv'
-	list ports 'ct-iptv-mc'
-	list ports 'ct-iptv-svc'
+	option stp '0'
+	option igmp_snooping '0'
 	list ports 'lan2'
-	option igmpversion '2'
+	list ports 'ct-iptv-svc'
+	list ports 'ct-iptv-mc'
 
 config interface 'luci_iptv'
+	option proto 'none'
 	option device 'br-iptv'
+	option auto '1'
 	option delegate '0'
-	option defaultroute '0'
-
-config interface 'SDYX'
-	option proto 'static'
-	option device 'lan3'
-	option ipaddr '10.94.131.7'
-	option gateway '10.94.0.1'
-	option broadcast '10.94.255.255'
-	option defaultroute '0'
-
-config device
-	option name 'lan3'
-	option igmpversion '2'
 
