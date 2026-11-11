@@ -24,7 +24,7 @@ on:
 env:
   REPO_URL: https://github.com/sgyuebing/ponwrt
   REPO_BRANCH: master
-  IMMORTALWRT_URL: https://github.com/immortalwrt/immortalwrt
+  IMMORTALWRT_URL: https://github.com/sgyuebing/immortalwrt
   PONWRT_URL: https://github.com/sgyuebing/ponwrt
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
