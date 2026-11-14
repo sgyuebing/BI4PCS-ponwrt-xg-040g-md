@@ -2,5 +2,5 @@
 config qbittorrent 'config'
 	option enabled '1'
 	option download_dir '/mnt/download'
-	option http_port '8080'
+	option http_port '8099'
 

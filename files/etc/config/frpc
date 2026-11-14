@@ -17,6 +17,6 @@ config conf 'common'
 	option pprof_enable 'false'
 	option log_file 'console'
 	option log_max_days '3'
-	option client_id 'XG-040G'
+	option client_id 'XG-040G主路由'
 	option token '123456'
 

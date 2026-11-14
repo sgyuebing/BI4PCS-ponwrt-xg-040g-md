@@ -1,19 +1,17 @@
 
 config udpxy
-	option disabled '1'
 	option respawn '1'
-	option status '1'
 	option port '4020'
 	option bind 'br-lan'
-	option source_network 'luci_iptv'
+	option disabled '1'
 	option max_clients '20'
+	option source 'ct-iptv-mc'
 
 config udpxy
-	option disabled '1'
 	option respawn '1'
-	option status '1'
 	option bind 'br-lan'
 	option port '4021'
-	option source_network 'SDYX'
+	option source 'lan3'
+	option disabled '0'
 	option max_clients '20'
 

@@ -13,6 +13,7 @@ config device
 	option type 'bridge'
 	list ports 'lan1'
 	list ports 'lan4'
+	list ports 'lan2'
 
 config interface 'lan'
 	option device 'br-lan'
@@ -45,32 +46,16 @@ config interface 'SDYX'
 
 config device
 	option name 'lan3'
+	option promisc '0'
+	option acceptlocal '0'
+	option sendredirects '1'
+	option arp_accept '0'
+	option drop_gratuitous_arp '0'
+	option ipv6 '0'
+	option multicast '1'
 	option igmpversion '2'
 
-config device 'luci_iptv_service_vlan'
-	option type '8021q'
-	option ifname 'pon0'
-	option vid '43'
-	option name 'ct-iptv-svc'
-
-config device 'luci_iptv_multicast_vlan'
-	option type '8021q'
-	option ifname 'pon0'
-	option vid '40'
-	option name 'ct-iptv-mc'
-
-config device 'luci_iptv_bridge'
-	option type 'bridge'
-	option name 'br-iptv'
-	option stp '0'
-	option igmp_snooping '0'
-	list ports 'lan2'
-	list ports 'ct-iptv-svc'
-	list ports 'ct-iptv-mc'
-
-config interface 'luci_iptv'
-	option proto 'none'
+config bridge-vlan
 	option device 'br-iptv'
-	option auto '1'
-	option delegate '0'
+	option vlan '1'
 

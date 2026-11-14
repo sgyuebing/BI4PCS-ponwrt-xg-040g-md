@@ -22,4 +22,7 @@ config conf 'common'
 	option admin_pwd '123'
 	option admin_addr '0.0.0.0'
 	option token '123456'
+	option authentication_method 'token'
+	option tls_force 'false'
+	option log_level 'info'
 
