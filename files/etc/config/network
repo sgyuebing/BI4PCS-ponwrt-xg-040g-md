@@ -43,6 +43,7 @@ config interface 'SDYX'
 	option gateway '10.94.0.1'
 	option broadcast '10.94.255.255'
 	option defaultroute '0'
+	option netmask '255.255.0.0'
 
 config device
 	option name 'lan3'
