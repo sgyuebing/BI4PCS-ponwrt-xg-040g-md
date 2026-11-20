@@ -36,6 +36,7 @@ config rule
 	option dest_port '68'
 	option target 'ACCEPT'
 	option family 'ipv4'
+	option enabled '1'
 
 config rule
 	option name 'Allow-Ping'
@@ -44,6 +45,7 @@ config rule
 	option icmp_type 'echo-request'
 	option family 'ipv4'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-IGMP'
@@ -51,6 +53,7 @@ config rule
 	option proto 'igmp'
 	option family 'ipv4'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-DHCPv6'
@@ -59,6 +62,7 @@ config rule
 	option dest_port '546'
 	option family 'ipv6'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-MLD'
@@ -71,6 +75,7 @@ config rule
 	list icmp_type '143/0'
 	option family 'ipv6'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-ICMPv6-Input'
@@ -90,6 +95,7 @@ config rule
 	option limit '1000/sec'
 	option family 'ipv6'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-ICMPv6-Forward'
@@ -106,6 +112,7 @@ config rule
 	option limit '1000/sec'
 	option family 'ipv6'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-IPSec-ESP'
@@ -113,6 +120,7 @@ config rule
 	option dest 'lan'
 	option proto 'esp'
 	option target 'ACCEPT'
+	option enabled '1'
 
 config rule
 	option name 'Allow-ISAKMP'
@@ -121,15 +129,7 @@ config rule
 	option dest_port '500'
 	option proto 'udp'
 	option target 'ACCEPT'
-
-config include 'luci_app_pptp_server'
-	option type 'script'
-	option path '/var/etc/pptpd.include'
-
-config include 'socat'
-	option type 'script'
-	option path '/var/etc/socat.include'
-	option reload '1'
+	option enabled '1'
 
 config include 'luci_iptv'
 	option type 'nftables'
@@ -163,4 +163,57 @@ config redirect
 	option src_dport '8001-8999'
 	option dest_ip '192.168.2.1'
 	option dest_port '8001-8999'
+
+config include 'luci_app_pptp_server'
+	option type 'script'
+	option path '/var/etc/pptpd.include'
+
+config include 'socat'
+	option type 'script'
+	option path '/var/etc/socat.include'
+	option reload '1'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name '飞牛端口'
+	option src 'wan'
+	option src_dport '5000-6000'
+	option dest_ip '192.168.2.1'
+	option dest_port '5000-6000'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name 'IPTV转发'
+	option src 'wan'
+	option src_dport '4020-4021'
+	option dest_ip '192.168.2.1'
+	option dest_port '4020-4021'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name '21'
+	option src 'wan'
+	option src_dport '21'
+	option dest_ip '192.168.2.1'
+	option dest_port '21'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name 'PPTP'
+	option src 'wan'
+	option src_dport '1723'
+	option dest_ip '192.168.2.1'
+	option dest_port '1723'
+
+config rule
+	option src 'wan'
+	option dest 'lan'
+	option name 'PPTP'
+	list proto 'gre'
+	option target 'ACCEPT'
+	option enabled '1'
 

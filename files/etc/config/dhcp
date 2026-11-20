@@ -17,7 +17,6 @@ config dnsmasq
 	option readethers '1'
 	option leasefile '/tmp/dhcp.leases'
 	option resolvfile '/tmp/resolv.conf.d/resolv.conf.auto'
-	option nonwildcard '1'
 	option localservice '1'
 	option dns_redirect '1'
 	option ednspacket_max '1232'
@@ -38,10 +37,14 @@ config dhcp 'wan'
 	option ignore '1'
 
 config odhcpd 'odhcpd'
-	option maindhcp '0'
 	option leasefile '/tmp/odhcpd.leases'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
 	option piodir '/tmp/odhcpd-piodir'
 	option hostsdir '/tmp/hosts'
+
+config host
+	option name 'hi3798mv300'
+	option ip '192.168.2.88'
+	list mac '00:11:22:33:44:55'
 
