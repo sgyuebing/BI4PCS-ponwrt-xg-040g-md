@@ -164,15 +164,6 @@ config redirect
 	option dest_ip '192.168.2.1'
 	option dest_port '8001-8999'
 
-config include 'luci_app_pptp_server'
-	option type 'script'
-	option path '/var/etc/pptpd.include'
-
-config include 'socat'
-	option type 'script'
-	option path '/var/etc/socat.include'
-	option reload '1'
-
 config redirect
 	option dest 'lan'
 	option target 'DNAT'
@@ -190,15 +181,42 @@ config redirect
 	option src_dport '4020-4021'
 	option dest_ip '192.168.2.1'
 	option dest_port '4020-4021'
+	option enabled '0'
 
 config redirect
 	option dest 'lan'
 	option target 'DNAT'
-	option name '21'
+	option name 'FTP21'
 	option src 'wan'
 	option src_dport '21'
 	option dest_ip '192.168.2.1'
 	option dest_port '21'
+
+config rule
+	option src 'wan'
+	option dest 'lan'
+	option name 'PPTP'
+	list proto 'gre'
+	option target 'ACCEPT'
+	option enabled '1'
+
+config include 'luci_app_pptp_server'
+	option type 'script'
+	option path '/var/etc/pptpd.include'
+
+config include 'socat'
+	option type 'script'
+	option path '/var/etc/socat.include'
+	option reload '1'
+
+config redirect
+	option dest 'lan'
+	option target 'DNAT'
+	option name 'FTP动态端口'
+	option src 'wan'
+	option src_dport '50000-51000'
+	option dest_ip '192.168.2.1'
+	option dest_port '50000-51000'
 
 config redirect
 	option dest 'lan'
@@ -208,12 +226,5 @@ config redirect
 	option src_dport '1723'
 	option dest_ip '192.168.2.1'
 	option dest_port '1723'
-
-config rule
-	option src 'wan'
-	option dest 'lan'
-	option name 'PPTP'
-	list proto 'gre'
-	option target 'ACCEPT'
-	option enabled '1'
+	list proto 'tcp'
 

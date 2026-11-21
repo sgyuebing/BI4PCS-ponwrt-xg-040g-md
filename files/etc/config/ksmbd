@@ -6,7 +6,7 @@ config globals
 	option allow_guest_ipc '1'
 
 config share
-	option name 'U'
+	option name 'SSD'
 	option path '/mnt/sda1'
 	option read_only 'no'
 	option force_root '1'
